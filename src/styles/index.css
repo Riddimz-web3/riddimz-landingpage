@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap')
+layer(base);
+
+@import 'tailwindcss';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --breakpoint-*: initial;
+  --breakpoint-xs: 450px;
+  --breakpoint-sm: 575px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1200px;
+  --breakpoint-2xl: 1400px;
+
+  --color-current: currentColor;
+  --color-transparent: transparent;
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-dark: #1a1a1a;
+  --color-primary: #e30613; /* Vibrant red matching logo */
+  --color-yellow: #ff4d4f; /* Softer red for accents, replacing yellow */
+  --color-bg-color-dark: #1c2526; /* Dark gray with a hint of red undertone for dark mode */
+
+  --color-body-color: #6b7280; /* Neutral gray for body text */
+  --color-body-color-dark: #a3a3a3; /* Lighter gray for dark mode text */
+
+  --color-stroke-stroke: #d1d5db; /* Light gray for borders */
+  --color-stroke-dark: #404040; /* Darker gray for dark mode borders */
+
+  --color-gray-50: #fafafa;
+  --color-gray-100: #f5f5f5;
+  --color-gray-200: #e5e5e5;
+  --color-gray-300: #d4d4d4;
+  --color-gray-400: #a3a3a3;
+  --color-gray-500: #737373;
+  --color-gray-600: #525252;
+  --color-gray-700: #404040;
+  --color-gray-800: #262626;
+  --color-gray-900: #171717;
+  --color-gray-950: #0a0a0a;
+  --color-gray-dark: #1f1f1f;
+  --color-gray-light: #f9f9f9;
+
+  --shadow-sign-up: 0px 5px 10px rgba(0, 0, 0, 0.3);
+  --shadow-one: 0px 2px 3px rgba(0, 0, 0, 0.1);
+  --shadow-two: 0px 5px 10px rgba(0, 0, 0, 0.15);
+  --shadow-three: 0px 5px 15px rgba(0, 0, 0, 0.1);
+  --shadow-sticky: inset 0 -1px 0 0 rgba(0, 0, 0, 0.2);
+  --shadow-sticky-dark: inset 0 -1px 0 0 rgba(255, 255, 255, 0.15);
+  --shadow-feature-2: 0px 10px 40px rgba(227, 6, 19, 0.2); /* Red-tinted shadow */
+  --shadow-submit: 0px 5px 20px rgba(0, 0, 0, 0.2);
+  --shadow-submit-dark: 0px 5px 20px rgba(0, 0, 0, 0.2);
+  --shadow-btn: 0px 1px 2px rgba(0, 0, 0, 0.2);
+  --shadow-btn-hover: 0px 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-btn-light: 0px 1px 2px rgba(0, 0, 0, 0.15);
+
+  --drop-shadow-three: 0px 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+@utility container {
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
+
+@utility sticky {
+  & .header-logo {
+    @apply py-5 lg:py-2;
+  }
+
+  & .menu-scroll.active {
+    @apply opacity-70;
+  }
+}
+
+@utility header-logo {
+  .sticky & {
+    @apply py-5 lg:py-2;
+  }
+}
+
+@utility menu-scroll {
+  .sticky &.active {
+    @apply opacity-70;
+  }
+}
+
+@utility active {
+  .sticky &.menu-scroll {
+    @apply opacity-70;
+  }
+}
+
+@utility dot {
+  input#togglePlan:checked ~ & {
+    @apply translate-x-full;
+  }
+}
+
+@utility box {
+  input#checkboxLabel:checked ~ & span {
+    @apply opacity-100;
+  }
+}
+
+@layer base {
+  body {
+    font-family: "Inter", sans-serif;
+  }
+}
+
+@layer components {
+  input[type="checkbox"]:checked ~ label span svg {
+    @apply inline-flex;
+  }
+}
